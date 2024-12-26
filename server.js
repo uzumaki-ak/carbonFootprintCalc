@@ -1,100 +1,9 @@
-// const express = require("express");
-// const cors = require("cors");
 
-// const port = 3001;
-// const app = express();
-
-// var corsOptions = {
-//   origin: "http://localhost:5173",
-//   credentials: true,
-// };
-
-// app.use(cors(corsOptions));
-
-// app.use(express.json());
-
-// app.post("/calculate", (req, res) => {
-//   try {
-//     const {
-//       electricityUsageKWh,
-//       transportationUsageGallonsPerMonth,
-//       shortFlight,
-//       mediumFlight,
-//       longFlight,
-//       dietaryChoice,
-//     } = req.body;
-
-//     // this 0.3978 willb no we multiply users elect with
-//     const electricityFactor = 0.3798;
-//     const transportationFactor = 9.087;
-//     const shortFlightFactor = 100;
-//     const mediumFlightFactor = 200;
-//     const largeFactor = 300;
-//     const dietaryChoiceFactor = {
-//       Vegan: 200,
-//       Vegetarian: 400,
-//       Pescatarian: 600,
-//       MeatEater: 800,
-//     };
-
-//     const year = 12;
-
-//     const electricityEmission = electricityUsageKWh * electricityFactor;
-//     const transportationEmission =
-//       transportationUsageGallonsPerMonth * transportationFactor;
-
-//     const airTravelShortFlight = shortFlight * shortFlightFactor;
-//     const airTravelMediumFlight = mediumFlight * mediumFlightFactor;
-//     const airTravelLargeFlight = longFlight * largeFactor;
-
-//     const dietaryChoiceEmission = dietaryChoiceFactor[dietaryChoice] || 0;
-
-//     const totalEmissionsFlight =
-//       airTravelShortFlight + airTravelMediumFlight + airTravelLargeFlight;
-
-//     const totalElectricityUsage = electricityEmission * year;
-//     const totalTransportationUsage = transportationEmission * year;
-
-//     const totalYearlyEmissions =
-//       dietaryChoiceEmission +
-//       totalEmissionsFlight +
-//       totalElectricityUsage +
-//       totalTransportationUsage;
-
-//     const result = {
-//       totalYearlyEmissions: { value: totalYearlyEmissions, unit: "kgCO2/year" },
-//       totalTransportationUsage: {
-//         value: totalTransportationUsage,
-//         unit: "kgCO2/year",
-//       },
-//       totalElectricityUsage: {
-//         value: totalElectricityUsage,
-//         unit: "kgCO2/year",
-//       },
-//       totalEmissionsFlight: { value: totalEmissionsFlight, unit: "kgCO2/year" },
-//       dietaryChoiceEmission: {
-//         value: dietaryChoiceEmission,
-//         unit: "kgCO2/year",
-//       },
-//     };
-
-//     res.json(result);
-//   } catch (err) {
-//     console.error("Error calculating CO2 emissions:", err);
-//     res.status(500).json({ error: "An internal server" });
-//   }
-// });
-
-// app.listen(port, () => {
-//   console.log(`server is running on port ${port}`);
-// });
-
-// Import required packages
 const express = require('express');
 const cors = require('cors');
 
 
-// Create Express app
+// Creating Express app
 const app = express();
 const port = 3001;
 
@@ -106,39 +15,36 @@ var corsOptions = {
   app.use(cors(corsOptions));
 
 
-// Define middleware to parse JSON bodies
+
 app.use(express.json());
 
 
 app.post('/calculate', (req, res) => {
     try {
-      // Get input data from the request body
+      
       const { 
         electricityUsageKWh, 
         transportationUsageGallonsPerMonth,
         flightsShortHaul,
         flightsMediumHaul,
         flightsLongHaul,
-        dietaryChoice, // Vegan, Vegetarian, Pescatarian, MeatEater
-        // recycleNewspaper, // Boolean flag for recycling newspaper
-        // recycleAluminum // Boolean flag for recycling aluminum
+        dietaryChoice, 
     } = req.body;
   
-      // Constants for emission factors and conversion factors
-      const electricityFactor = 0.3978; // Example factor for electricity emissions calculation
-      const transportationFactor = 9.087; // Example factor for transportation emissions calculation
-      const kgCO2ePerYearFactor = 12; // Conversion factor for monthly to yearly emissions
-      const airTravelFactorShortHaul = 100; // Example factor for short-haul flight emissions (adjust as needed)
-      const airTravelFactorMediumHaul = 200; // Example factor for medium-haul flight emissions (adjust as needed)
-      const airTravelFactorLongHaul = 300; // Example factor for long-haul flight emissions (adjust as needed)
-      const dietaryFactors = { //daily carbon x 30 x 12 -> kg
-        Vegan: 200, // Example factor for vegan diet
-        Vegetarian: 400, // Example factor for vegetarian diet
-        Pescatarian: 600, // Example factor for pescatarian diet
-        MeatEater: 800 // Example factor for meat-eater diet 
+    
+      const electricityFactor = 0.3978; 
+      const transportationFactor = 9.087; 
+      const kgCO2ePerYearFactor = 12;
+      const airTravelFactorShortHaul = 100;
+      const airTravelFactorMediumHaul = 200; 
+      const airTravelFactorLongHaul = 300; 
+      const dietaryFactors = { 
+        Vegan: 200, 
+        Vegetarian: 400, 
+        Pescatarian: 600, 
+        MeatEater: 800 
       };
-    //   const newspaperRecyclingFactor = 184; // Additional factor for not recycling newspaper
-    //   const aluminumRecyclingFactor = 166; // Additional factor for not recycling aluminum
+   
   
       // Calculate CO2 emissions for electricity and transportation
       const electricityEmissions = electricityUsageKWh * electricityFactor;
@@ -192,7 +98,7 @@ app.post('/calculate', (req, res) => {
         totalYearlyEmissions: { value: totalYearlyEmissions, unit: 'kgCO2e/year' },
       };
   
-      // Send the result as JSON response
+      
       res.json(result);
     } catch (err) {
       console.error('Error calculating CO2 emissions:', err);
@@ -201,7 +107,7 @@ app.post('/calculate', (req, res) => {
   });
   
 
-// Start the Express server
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
