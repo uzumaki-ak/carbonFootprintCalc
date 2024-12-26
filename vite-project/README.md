@@ -1,50 +1,42 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+# Carbon Footprint Calculator
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A simple yet effective tool to calculate your carbon footprint, built with TypeScript, JavaScript, and Tailwind CSS.
 
-## Expanding the ESLint configuration
+# Introduction
+Climate change is one of the most pressing issues of our time, and understanding our carbon footprint is the first step towards making a positive impact. This calculator aims to provide an easy-to-use interface for individuals to estimate their carbon footprint and take steps to reduce it.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+# Features
+- Calculate carbon footprint based on daily activities, transportation, and energy consumption
+- Provides personalized recommendations for reducing carbon footprint
+- Simple and intuitive interface
+- Built with TypeScript, JavaScript, and Tailwind CSS for a seamless user experience
 
-- Configure the top-level `parserOptions` property like this:
+# Getting Started
+1. Clone the repository using git clone (link unavailable)
+2. Install dependencies using npm install or yarn install
+3. Start the application using npm start or yarn start
+4. Open your web browser and navigate to http://localhost:5173
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+# Contributing
+Contributions are welcome! If you'd like to report a bug, suggest a feature, or contribute to the codebase, please:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. Fork the repository and create a new branch
+2. Make your changes and commit them with a descriptive message
+3. Open a pull request and describe the changes you've made
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+# License
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+# Acknowledgments
+- Anikesh: Creator and maintainer of the project
+
+
+# Support
+If you have any questions, concerns, or need support, please don't hesitate to reach out:
+
+- Email: gojostrou264@gmail.com
+
+
+Thank you for using the Carbon Footprint Calculator!
